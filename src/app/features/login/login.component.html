@@ -1,0 +1,166 @@
+<section
+  class="grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 lg:py-20 flex flex-col lg:flex-row justify-between gap-14 lg:gap-24 bg-linear-to-br from-slate-900 via-slate-800 to-green-900/70 rounded-3xl text-white"
+>
+  <div class="w-full lg:w-1/2 flex flex-col items-center text-center space-y-10">
+    <img
+      src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=800"
+      class="w-full max-w-md rounded-3xl shadow-2xl object-cover aspect-4/3 ring-1 ring-white/10 hover:scale-[1.02] transition duration-500"
+    />
+
+    <div class="space-y-5">
+      <h1 class="text-3xl sm:text-4xl font-extrabold leading-tight">
+        {{ 'login.hero.title' | translate }}
+        <span class="text-green-400">{{ 'login.hero.highlight' | translate }}</span>
+      </h1>
+
+      <p class="text-gray-300 max-w-md mx-auto leading-relaxed">
+        {{ 'login.hero.description' | translate }}
+      </p>
+    </div>
+
+    <ul class="flex flex-wrap items-center justify-center gap-6 text-sm font-medium">
+      <li class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl backdrop-blur">
+        <i class="fa-solid fa-truck text-green-400"></i>
+        {{ 'login.hero.features.delivery' | translate }}
+      </li>
+      <li class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl backdrop-blur">
+        <i class="fa-solid fa-shield-halved text-green-400"></i>
+        {{ 'login.hero.features.secure' | translate }}
+      </li>
+      <li class="flex items-center gap-2 bg-white/10 px-4 py-2 rounded-xl backdrop-blur">
+        <i class="fa-solid fa-clock text-green-400"></i>
+        {{ 'login.hero.features.support' | translate }}
+      </li>
+    </ul>
+  </div>
+
+  <div
+    class="w-full lg:w-1/2 max-w-lg mx-auto lg:mx-0 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-8 sm:p-10 text-gray-800"
+  >
+    <div class="text-center mb-10">
+      <h2 class="text-2xl font-extrabold text-green-600 mb-3 tracking-tight">
+        {{ 'login.auth.brand' | translate }}<span class="text-gray-800"></span>
+      </h2>
+      <h3 class="text-xl font-bold text-slate-800">
+        {{ 'login.auth.welcome' | translate }}
+      </h3>
+      <p class="text-sm text-gray-500 mt-1">
+        {{ 'login.auth.subtitle' | translate }}
+      </p>
+    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="space-y-5">
+      <div>
+        <label class="block text-sm font-medium text-gray-700 mb-1.5">
+          {{ 'login.auth.email' | translate }}
+        </label>
+        <div class="relative">
+          <i
+            class="fa-regular fa-envelope text-gray-400 absolute left-4 top-1/2 -translate-y-1/2"
+          ></i>
+          <input
+            formControlName="email"
+            type="email"
+            [placeholder]="'login.auth.emailPlaceholder' | translate"
+            class="w-full pl-11 pr-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition shadow-sm focus:shadow-md"
+          />
+        </div>
+        @if (loginForm.get('email')?.invalid && loginForm.get('email')?.touched) {
+          <div
+            class="bg-red-100 border-l-4 mt-1.5 rounded-2xl border-red-500 text-red-700 p-4"
+            role="alert"
+          >
+            @if (loginForm.get('email')?.hasError('required')) {
+              <p class="font-semibold text-[.875rem]">
+                <i class="fa fa-circle text-[8px] mx-1"></i>
+                {{ 'login.validation.emailRequired' | translate }}
+              </p>
+            }
+
+            @if (loginForm.get('email')?.hasError('email')) {
+              <p class="font-semibold text-[.875rem]">
+                <i class="fa fa-circle text-[8px] mx-1"></i>
+                {{ 'login.validation.emailInvalid' | translate }}
+              </p>
+            }
+          </div>
+        }
+      </div>
+
+      <div>
+        <div class="flex items-center justify-between mb-1.5">
+          <label class="block text-sm font-medium text-gray-700">
+            {{ 'login.auth.password' | translate }}
+          </label>
+          <a class="text-sm text-green-600 hover:underline font-medium">
+            {{ 'login.auth.forgotPassword' | translate }}
+          </a>
+        </div>
+
+        <div class="relative">
+          <i class="fa-solid fa-lock text-gray-400 absolute left-4 top-1/2 -translate-y-1/2"></i>
+          <input
+            formControlName="password"
+            type="password"
+            [placeholder]="'login.auth.passwordPlaceholder' | translate"
+            class="w-full pl-11 pr-11 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition shadow-sm focus:shadow-md"
+          />
+        </div>
+        @if (loginForm.get('password')?.invalid && loginForm.get('password')?.touched) {
+          <div
+            class="bg-red-100 border-l-4 mt-1.5 rounded-2xl border-red-500 text-red-700 p-4"
+            role="alert"
+          >
+            @if (loginForm.get('password')?.hasError('required')) {
+              <p class="font-semibold text-[.875rem]">
+                <i class="fa fa-circle text-[8px] mx-1"></i>
+                {{ 'login.validation.passwordRequired' | translate }}
+              </p>
+            }
+            @if (loginForm.get('password')?.hasError('pattern')) {
+              <p class="font-semibold text-[.875rem]">
+                <i class="fa fa-circle text-[8px] mx-1"></i>
+                {{ 'login.validation.passwordPattern' | translate }}
+              </p>
+            }
+          </div>
+        }
+      </div>
+
+      <div class="pt-3">
+        <button
+          type="submit"
+          class="w-full bg-linear-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white font-semibold py-3 rounded-xl transition shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+        >
+          {{ 'login.auth.signIn' | translate }}
+        </button>
+      </div>
+    </form>
+
+    <div class="mt-8 text-center space-y-6">
+      <p class="text-sm text-gray-600">
+        {{ 'login.auth.noAccount' | translate }}
+        <a routerLink="/register" class="text-green-600 font-medium hover:underline">
+          {{ 'login.auth.createAccount' | translate }}
+        </a>
+      </p>
+
+      <div
+        class="flex items-center justify-center gap-5 text-xs text-gray-500 pt-3 border-t border-gray-100"
+      >
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-lock"></i>
+          {{ 'login.footer.secure' | translate }}
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-users"></i>
+          {{ 'login.footer.users' | translate }}
+        </span>
+        <span class="flex items-center gap-1.5">
+          <i class="fa-solid fa-star"></i>
+          {{ 'login.footer.rating' | translate }}
+        </span>
+      </div>
+    </div>
+  </div>
+</section>

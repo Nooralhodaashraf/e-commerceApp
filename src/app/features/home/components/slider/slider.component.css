@@ -1,0 +1,41 @@
+	
+	.item {
+  background-image:
+    linear-gradient(to right, #00c758e6, #05df7280), url(/assets/imgs/home-slider-1.d79601a8.png);
+  background-size: cover;
+  background-position: center;
+}
+
+body,
+:root{
+    box-sizing: border-box;
+}
+
+swiper-container::part(button-prev),
+swiper-container::part(button-next){
+    background-color: white;
+    padding: 10px;
+  font-size: 12px;   
+   color:var(--color-primary-700) ;
+    border-radius: 50%;
+    --swiper-navigation-size:30px;
+    box-shadow:0 0 10px rgba(0, 0, 0, 0.215);
+    transition: all 0.3s;
+}
+
+swiper-container::part(button-prev):hover,
+swiper-container::part(button-next):hover{
+    transform: scale(1.1);
+}
+
+swiper-container::part(bullet){
+    background-color:#fff;
+}
+
+swiper-container::part(bullet-active){
+    background:#fff;
+    width: 25px;
+    transition: all 1s;
+    height: 10px;
+    border-radius: 40%;
+}

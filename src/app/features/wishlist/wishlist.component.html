@@ -1,0 +1,127 @@
+<section class="min-h-screen bg-linear-to-br from-gray-50 via-white to-gray-100 py-12">
+  <div class="max-w-6xl mx-auto px-4">
+    <!-- HEADER -->
+    <div class="mb-10">
+      <p class="text-sm text-gray-400">Home / Wishlist</p>
+
+      <div class="flex items-center gap-4 mt-3">
+        <div
+          class="w-12 h-12 bg-rose-100 text-rose-500 flex items-center justify-center rounded-xl shadow-sm"
+        >
+          <i class="fa-solid fa-heart text-lg"></i>
+        </div>
+
+        <div>
+          <h2 class="text-3xl font-extrabold text-gray-800 tracking-tight">My Wishlist</h2>
+          <p class="text-sm text-gray-500 mt-1">{{ allWishData().count }} items saved</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TABLE -->
+    <div class="bg-white rounded-3xl shadow-lg border border-gray-100 overflow-hidden">
+      <!-- HEADER ROW -->
+      <div class="grid grid-cols-12 bg-gray-50 text-sm text-gray-500 px-6 py-5 font-semibold">
+        <div class="col-span-5">Product</div>
+        <div class="col-span-2 text-center">Price</div>
+        <div class="col-span-2 text-center">Status</div>
+        <div class="col-span-3 text-right">Actions</div>
+      </div>
+
+      <!-- ITEM -->
+      <div class="divide-y divide-gray-100">
+        @if (wishList.length > 0) {
+          @for (item of wishList; track $index) {
+            <div
+              class="grid grid-cols-12 items-center px-6 py-6 hover:bg-gray-50/80 transition group"
+            >
+              <!-- PRODUCT -->
+              <div class="col-span-5 flex items-center gap-4">
+                <div class="relative">
+                  <img
+                    [src]="item.imageCover"
+                    class="w-16 h-16 object-cover rounded-xl border border-gray-100 shadow-sm group-hover:scale-105 transition duration-300"
+                  />
+                </div>
+
+                <div [routerLink]="['/details', item._id, item.slug]">
+                  <h3 class="font-semibold text-gray-800 group-hover:text-primary-600 transition">
+                    {{ item.title }}
+                  </h3>
+                  <p class="text-xs text-gray-400 mt-1">{{ item.category.name }}</p>
+                </div>
+              </div>
+
+              <!-- PRICE -->
+              <div class="col-span-2 text-center font-bold text-gray-800">{{ item.price }} EGP</div>
+
+              <!-- STATUS -->
+              <div class="col-span-2 flex justify-center">
+                <span
+                  class="bg-primary-100 text-primary-700 text-xs px-4 py-1.5 rounded-full font-semibold shadow-sm"
+                >
+                  In Stock
+                </span>
+              </div>
+
+              <!-- ACTIONS -->
+              <div class="col-span-3 flex justify-end gap-2">
+                <button
+                  class="bg-primary-600 text-white px-4 py-2 rounded-xl text-sm hover:bg-primary-700 transition flex items-center gap-2 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+                >
+                  <i class="fa-solid fa-cart-shopping"></i>
+                  Add to Cart
+                </button>
+
+                <button
+                  (click)="deletItem(item._id)"
+                  class="w-10 h-10 flex items-center justify-center rounded-xl border border-gray-200 hover:bg-red-50 text-red-500 transition hover:scale-105"
+                >
+                  <i class="fa-solid fa-trash"></i>
+                </button>
+              </div>
+            </div>
+          }
+        } @else {
+          <div class="text-center px-6 py-16 max-w-md mx-auto">
+            <!-- Icon -->
+            <div
+              class="mx-auto flex h-32 w-32 items-center justify-center rounded-full bg-rose-50 mb-8 shadow-inner"
+            >
+              <i class="fa-regular fa-heart text-5xl text-rose-400"></i>
+            </div>
+
+            <!-- Title -->
+            <h2 class="text-2xl font-extrabold text-gray-800 mb-3">Your wishlist is empty</h2>
+
+            <!-- Description -->
+            <p class="text-gray-500 text-sm leading-relaxed mb-8">
+              Looks like you haven't added any favorites yet. <br />
+              Start exploring and save the products you love <i class="fa fa-heart"></i>
+            </p>
+
+            <!-- Button -->
+            <button
+              routerLink="/"
+              class="inline-flex items-center gap-2 px-6 py-3 bg-primary-600 text-white rounded-full font-semibold shadow hover:bg-primary-700 hover:shadow-lg transition hover:-translate-y-0.5"
+            >
+              Start Shopping
+              <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- CONTINUE -->
+    <div class="mt-8">
+      <a
+        href="#"
+        class="text-sm text-gray-500 hover:text-primary-600 transition flex items-center gap-2 w-fit"
+      >
+        <i class="fa-solid fa-arrow-left-long"></i>
+        Continue Shopping
+      </a>
+    </div>
+  </div>
+</section>

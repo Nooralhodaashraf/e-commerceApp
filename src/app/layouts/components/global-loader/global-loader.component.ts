@@ -1,0 +1,12 @@
+import { LoaderService } from './../../../core/services/loader.service';
+import { Component, inject } from '@angular/core';
+
+@Component({
+  selector: 'app-global-loader',
+  imports: [],
+  templateUrl: './global-loader.component.html',
+  styleUrl: './global-loader.component.css',
+})
+export class GlobalLoaderComponent {
+  loaderService = inject(LoaderService);
+}

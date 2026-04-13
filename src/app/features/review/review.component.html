@@ -1,0 +1,326 @@
+<div
+  class="max-w-6xl mx-auto bg-white border border-gray-100 rounded-2xl shadow-md overflow-hidden"
+>
+  <!-- Tabs -->
+  <div class="flex items-center gap-8 px-6 pt-4 border-b text-sm bg-gray-50">
+    <button
+      (click)="setTab('details')"
+      class="flex items-center gap-2 pb-3 border-b-2 transition-all duration-200"
+      [class]="
+        activeTab === 'details'
+          ? 'text-green-600 border-green-600 font-semibold'
+          : 'text-gray-400 border-transparent hover:text-green-600'
+      "
+    >
+      <i class="fa-solid fa-circle text-[8px]"></i>
+      Product Details
+    </button>
+
+    <button
+      (click)="setTab('reviews')"
+      class="flex items-center gap-2 pb-3 border-b-2 transition-all duration-200"
+      [class]="
+        activeTab === 'reviews'
+          ? 'text-green-600 border-green-600 font-semibold'
+          : 'text-gray-400 border-transparent hover:text-green-600'
+      "
+    >
+      <i class="fa-regular fa-star"></i>
+      Reviews ({{ reviewList().length }}
+    </button>
+
+    <button
+      (click)="setTab('shipping')"
+      class="flex items-center gap-2 pb-3 border-b-2 transition-all duration-200"
+      [class]="
+        activeTab === 'shipping'
+          ? 'text-green-600 border-green-600 font-semibold'
+          : 'text-gray-400 border-transparent hover:text-green-600'
+      "
+    >
+      <i class="fa-solid fa-truck-fast"></i>
+      Shipping & Returns
+    </button>
+  </div>
+
+  <div class="p-8">
+    <!-- ================= DETAILS ================= -->
+    <div [hidden]="activeTab !== 'details'" class="space-y-8">
+      <!-- About -->
+      <div>
+        <h3 class="text-base font-semibold text-gray-800 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-circle-info text-green-600"></i>
+          About this Product
+        </h3>
+        <p class="text-sm text-gray-600 leading-relaxed">
+          Genuine and smooth leather upper Secure lace-ups with side zipper closure Slightly
+          cushioned footbed provides comfort Patterned chunky outsole provides traction and grip
+        </p>
+      </div>
+
+      <!-- Grid -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Product Info -->
+        <div class="bg-gray-50 rounded-xl p-5 shadow-sm hover:shadow-md transition">
+          <h4 class="text-sm font-semibold text-gray-800 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-box text-green-600"></i>
+            Product Information
+          </h4>
+
+          <div class="space-y-3 text-sm">
+            <div class="flex justify-between">
+              <span class="text-gray-500 flex items-center gap-2">
+                <i class="fa-solid fa-layer-group text-xs"></i>
+                Category
+              </span>
+              <span class="text-gray-800 font-medium">Men’s Fashion</span>
+            </div>
+
+            <div class="flex justify-between">
+              <span class="text-gray-500 flex items-center gap-2">
+                <i class="fa-solid fa-tags text-xs"></i>
+                Subcategory
+              </span>
+              <span class="text-gray-800 font-medium">Men’s Clothing</span>
+            </div>
+
+            <div class="flex justify-between">
+              <span class="text-gray-500 flex items-center gap-2">
+                <i class="fa-solid fa-copyright text-xs"></i>
+                Brand
+              </span>
+              <span class="text-gray-800 font-medium">Jack & Jones</span>
+            </div>
+
+            <div class="flex justify-between">
+              <span class="text-gray-500 flex items-center gap-2">
+                <i class="fa-solid fa-chart-line text-xs"></i>
+                Items Sold
+              </span>
+              <span class="text-gray-800 font-medium">17k+ sold</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key Features -->
+        <div class="bg-gray-50 rounded-xl p-5 shadow-sm hover:shadow-md transition">
+          <h4 class="text-sm font-semibold text-gray-800 mb-4 flex items-center gap-2">
+            <i class="fa-solid fa-gem text-green-600"></i>
+            Key Features
+          </h4>
+
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-center gap-3 text-gray-700">
+              <i class="fa-solid fa-check text-green-600"></i>
+              Premium Quality Product
+            </li>
+
+            <li class="flex items-center gap-3 text-gray-700">
+              <i class="fa-solid fa-shield-halved text-green-600"></i>
+              100% Authentic Guarantee
+            </li>
+
+            <li class="flex items-center gap-3 text-gray-700">
+              <i class="fa-solid fa-box-open text-green-600"></i>
+              Fast & Secure Packaging
+            </li>
+
+            <li class="flex items-center gap-3 text-gray-700">
+              <i class="fa-solid fa-circle-check text-green-600"></i>
+              Quality Tested
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= REVIEWS ================= -->
+    <div [hidden]="activeTab !== 'reviews'">
+      <div class="grid md:grid-cols-4 gap-6 items-start">
+        <!-- Rating -->
+        <div class="text-center">
+          <div class="text-4xl font-bold text-gray-800">{{ product().ratingsAverage }}</div>
+          <div class="flex items-center mb-2">
+            <div class="flex text-yellow-400 mr-2 gap-0.5">
+              <div class="flex text-yellow-400 text-sm gap-0.5 drop-shadow-sm">
+                @for (i of starsArray; track $index) {
+                  @if (i < product().ratingsAverage) {
+                    <i class="fas fa-star"></i>
+                  } @else if (i > product().ratingsAverage) {
+                    <i class="far fa-star text-gray-300"></i>
+                  }
+                }
+              </div>
+            </div>
+            <span class="text-xs text-gray-500">
+              {{ product().ratingsAverage }} ( {{ product().ratingsAverage }} )</span
+            >
+          </div>
+          <p class="text-xs text-gray-500 mt-1">Based on 14 reviews</p>
+        </div>
+
+        <!-- Bars -->
+        <div class="md:col-span-3 space-y-3 text-sm">
+          <div class="flex items-center gap-3">
+            <span class="w-12 text-gray-600">5 star</span>
+            <div class="flex-1 h-2 bg-gray-200 rounded">
+              <div class="h-2 bg-yellow-500 rounded w-[80%]"></div>
+            </div>
+            <span class="w-10 text-xs text-gray-500">80%</span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="w-12 text-gray-600">4 star</span>
+            <div class="flex-1 h-2 bg-gray-200 rounded">
+              <div class="h-2 bg-yellow-500 rounded w-[25%]"></div>
+            </div>
+            <span class="w-10 text-xs text-gray-500">25%</span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="w-12 text-gray-600">3 star</span>
+            <div class="flex-1 h-2 bg-gray-200 rounded">
+              <div class="h-2 bg-yellow-500 rounded w-[5%]"></div>
+            </div>
+            <span class="w-10 text-xs text-gray-500">5%</span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="w-12 text-gray-600">2 star</span>
+            <div class="flex-1 h-2 bg-gray-200 rounded">
+              <div class="h-2 bg-yellow-500 rounded w-[5%]"></div>
+            </div>
+            <span class="w-10 text-xs text-gray-500">5%</span>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <span class="w-12 text-gray-600">1 star</span>
+            <div class="flex-1 h-2 bg-gray-200 rounded">
+              <div class="h-2 bg-yellow-500 rounded w-[5%]"></div>
+            </div>
+            <span class="w-10 text-xs text-gray-500">5%</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 gap-5 w-full pt-7">
+        @if (reviewList()) {
+          @for (review of reviewList(); track review._id) {
+            <div
+              class="max-w-2xl col-span-1 bg-white rounded-xl shadow-md p-6 border border-gray-100"
+            >
+              <!-- Header -->
+              <div class="flex items-center gap-4 mb-4">
+                <!-- Avatar -->
+                <div class="w-14 h-14 rounded-full bg-primary-200 flex items-center justify-center">
+                  <i class="fa fa-user text-secondary"></i>
+                </div>
+
+                <!-- Name + Stars -->
+                <div>
+                  <h3 class="font-semibold text-gray-800 text-lg">{{ review.user.name }}</h3>
+                  <div class="flex items-center mb-2">
+                    <div class="flex text-yellow-400 mr-2 gap-0.5">
+                      <div class="flex text-yellow-400 text-sm gap-0.5 drop-shadow-sm">
+                        @for (i of starsArray; track $index) {
+                          @if (i < review.rating) {
+                            <i class="fas fa-star"></i>
+                          } @else if (i > review.rating) {
+                            <i class="far fa-star text-gray-300"></i>
+                          }
+                        }
+                      </div>
+                    </div>
+                    <span class="text-xs text-gray-500">
+                      {{ review.rating }} ( {{ review.rating }} )</span
+                    >
+                  </div>
+                </div>
+              </div>
+
+              <!-- Text -->
+              <p class="text-gray-600 italic leading-relaxed text-[15px]">
+                {{ review.review }}
+              </p>
+            </div>
+          }
+        } @else {
+          <!-- Empty State -->
+          <div class="text-center py-10 border-t mt-8">
+            <div class="text-gray-300 text-4xl mb-2">
+              <i class="fa-regular fa-star"></i>
+            </div>
+            <p class="text-sm text-gray-500">Customer reviews will be displayed here.</p>
+            <button
+              class="mt-3 text-green-600 text-sm hover:underline flex items-center gap-2 mx-auto"
+            >
+              <i class="fa-solid fa-pen"></i>
+              Write a Review
+            </button>
+          </div>
+        }
+      </div>
+    </div>
+
+    <!-- ================= SHIPPING ================= -->
+    <div [hidden]="activeTab !== 'shipping'" class="space-y-6">
+      <div class="grid md:grid-cols-2 gap-6">
+        <!-- Shipping Info -->
+        <div class="bg-green-50 p-5 rounded-xl shadow-sm">
+          <h4 class="font-semibold text-green-700 mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-truck text-green-600"></i>
+            Shipping Information
+          </h4>
+
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-check text-green-600"></i> Free shipping on orders over $50
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-clock text-green-600"></i> Standard delivery: 3-5 business days
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-bolt text-green-600"></i> Express delivery available (1-2 days)
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-location-dot text-green-600"></i> Track your order in real-time
+            </li>
+          </ul>
+        </div>
+
+        <!-- Returns -->
+        <div class="bg-green-50 p-5 rounded-xl shadow-sm">
+          <h4 class="font-semibold text-green-700 mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-rotate-left text-green-600"></i>
+            Returns & Refunds
+          </h4>
+
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-check text-green-600"></i> 30-day hassle-free returns
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-money-bill-wave text-green-600"></i> Full refund or exchange
+              available
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-box text-green-600"></i> Free return shipping on defective items
+            </li>
+            <li class="flex items-center gap-2">
+              <i class="fa-solid fa-globe text-green-600"></i> Easy online return process
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Protection -->
+      <div class="bg-gray-50 p-5 rounded-xl text-sm text-gray-600 border">
+        <strong class="flex items-center gap-2 text-gray-800">
+          <i class="fa-solid fa-shield-halved text-green-600"></i>
+          Buyer Protection Guarantee
+        </strong>
+        <br />
+        Get a full refund if your order doesn’t arrive or isn’t as described.
+      </div>
+    </div>
+  </div>
+</div>

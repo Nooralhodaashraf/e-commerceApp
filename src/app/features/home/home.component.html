@@ -1,0 +1,26 @@
+<app-slider></app-slider>
+
+<app-categories-home></app-categories-home>
+
+<!-- FEATURED -->
+<div class="container mx-auto mt-16">
+  <div
+    class="border-l-4 border-primary-700 flex justify-between items-center flex-wrap gap-4 mb-10"
+  >
+    <h2 class="text-4xl font-extrabold px-2 text-gray-800 relative">
+      Featured
+      <span class="w-20 h-1 text-emerald-700 mt-2 rounded-full">Products</span>
+    </h2>
+
+    <a class="text-emerald-600 font-semibold hover:tracking-wide transition"> View All → </a>
+  </div>
+  <div class="grid grid-cols-4 gap-6">
+    @for (product of productList(); track product.id) {
+      <app-product-card [product]="product" />
+    }
+  </div>
+
+  <!-- NEWSLETTER -->
+
+  <app-newsletter></app-newsletter>
+</div>
