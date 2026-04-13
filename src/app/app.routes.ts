@@ -67,7 +67,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/orders/orders.component').then((c) => c.OrdersComponent),
     title: 'Orders',
-    // canActivate: [authGuard],
+    canActivate: [authGuard],
   },
 
   {
@@ -75,6 +75,7 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/profile/profile.component').then((c) => c.ProfileComponent),
     title: 'Profile',
+    canActivate: [authGuard],
   },
   {
     path: 'allProduct',
