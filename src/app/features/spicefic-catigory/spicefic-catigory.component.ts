@@ -1,8 +1,9 @@
-import { Component, inject, OnInit, signal } from '@angular/core';
+import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { CatigoriesService } from '../../core/services/catigories.service';
 import { ActivatedRoute } from '@angular/router';
 import { Category, Product } from '../../core/model/product.interface';
 import { Catigory } from '../home/components/categories-home/catigory.interface';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-spicefic-catigory',
@@ -13,13 +14,16 @@ import { Catigory } from '../home/components/categories-home/catigory.interface'
 export class SpiceficCatigoryComponent implements OnInit {
   private readonly catigoriesService = inject(CatigoriesService);
   private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly pLATFORM_ID = inject(PLATFORM_ID);
   productList = signal<Product[]>([]);
   catInfo: Catigory = {} as Catigory;
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((params) => {
-      this.getAllproduct(params.get('id')!);
-      this.getCatData(params.get('id')!);
-    });
+    if (isPlatformBrowser(this.pLATFORM_ID)) {
+      this.activatedRoute.paramMap.subscribe((params) => {
+        this.getAllproduct(params.get('id')!);
+        this.getCatData(params.get('id')!);
+      });
+    }
   }
 
   getAllproduct(id: string): void {
