@@ -1,8 +1,9 @@
+import { RenderMode } from '@angular/ssr';
 import { Product } from './../../core/model/product.interface';
-import { Component, computed, inject, input, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, input, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../core/services/product.service';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, isPlatformBrowser } from '@angular/common';
 import { ReviewComponent } from '../review/review.component';
 import { Review } from '../../core/model/review.interface';
 
@@ -15,14 +16,17 @@ import { Review } from '../../core/model/review.interface';
 export class DetailsComponent implements OnInit {
   private readonly activatedRoute = inject(ActivatedRoute);
   private readonly productService = inject(ProductService);
+  private readonly pLATFORM_ID = inject(PLATFORM_ID);
   reviewList = signal<Review>({} as Review);
 
   ProductDetails = signal<Product>({} as Product);
 
   ngOnInit(): void {
-    this.activatedRoute.paramMap.subscribe((params) => {
-      this.getProductDetails(params.get('id')!);
-    });
+    if (isPlatformBrowser(this.pLATFORM_ID)) {
+      this.activatedRoute.paramMap.subscribe((params) => {
+        this.getProductDetails(params.get('id')!);
+      });
+    }
   }
 
   getProductDetails(id: string): void {
