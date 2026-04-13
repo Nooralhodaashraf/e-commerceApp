@@ -3,7 +3,12 @@ import {
   importProvidersFrom,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
-import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
+import {
+  provideRouter,
+  withHashLocation,
+  withInMemoryScrolling,
+  withViewTransitions,
+} from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
@@ -22,6 +27,7 @@ export const appConfig: ApplicationConfig = {
       routes,
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
       withViewTransitions(),
+      withHashLocation(),
     ),
     provideClientHydration(withEventReplay()),
     provideToastr(),
