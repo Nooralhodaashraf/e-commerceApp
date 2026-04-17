@@ -65,8 +65,9 @@ export class CheckOutComponent implements OnInit {
     }
   }
 
-  changeFlage(el: HTMLInputElement): void {
-    this.flag.set(el.value);
+  changeFlage(event: any) {
+    this.flag.set(event.target.value);
+    console.log(this.flag());
   }
 
   getCartId(): void {

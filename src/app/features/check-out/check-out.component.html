@@ -105,14 +105,14 @@
                   <div class="space-y-4">
                     <label for="payment-cod" class="block relative">
                       <input
-                        #ref
+                        $event
                         type="radio"
                         id="payment-cod"
                         name="payment_method"
                         value="cash"
                         class="peer sr-only"
                         checked
-                        (change)="changeFlage(ref)"
+                        (change)="changeFlage($event)"
                       />
 
                       <div
@@ -138,13 +138,13 @@
 
                     <label for="payment-card" class="block relative">
                       <input
-                        #ref
+                        $event
                         type="radio"
                         id="payment-card"
                         name="payment_method"
                         value="card"
                         class="peer sr-only"
-                        (change)="changeFlage(ref)"
+                        (change)="changeFlage($event)"
                       />
 
                       <div
