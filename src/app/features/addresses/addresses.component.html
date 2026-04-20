@@ -1,0 +1,142 @@
+<section class="min-h-screen bg-linear-to-br from-slate-50 via-white to-slate-200 py-10">
+  <div class="max-w-7xl mx-auto px-4">
+    <!-- HEADER -->
+    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-8 gap-4">
+      <div>
+        <p class="text-sm text-gray-400">Home / Cart / Checkout</p>
+        <h2 class="text-3xl font-extrabold text-gray-800">Complete Your Order</h2>
+        <p class="text-gray-500 text-sm">Review your items and complete your purchase</p>
+      </div>
+
+      <button class="text-emerald-600 font-medium hover:underline">← Back to Cart</button>
+    </div>
+
+    <div class="grid lg:grid-cols-3 gap-8">
+      <!-- LEFT SIDE -->
+      <div class="lg:col-span-2 space-y-6">
+        <!-- SHIPPING -->
+        <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
+          <div class="bg-emerald-600 text-white px-6 py-3 font-semibold">Shipping Address</div>
+
+          <div class="p-6 space-y-5">
+            <!-- SAVED -->
+            <div class="border rounded-xl p-4 hover:border-emerald-500 transition cursor-pointer">
+              <p class="font-medium text-gray-700">Sadat City</p>
+              <p class="text-sm text-gray-500">Sadat City, Egypt</p>
+            </div>
+
+            <!-- ADD NEW -->
+            <div
+              class="border-2 border-dashed border-emerald-400 rounded-xl p-4 text-emerald-600 bg-emerald-50 cursor-pointer hover:bg-emerald-100 transition"
+            >
+              + Use a different address
+            </div>
+
+            <!-- FORM -->
+            <div class="space-y-4 pt-2">
+              <input
+                class="w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 outline-none"
+                placeholder="City (e.g. Cairo, Alexandria)"
+              />
+
+              <input
+                class="w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 outline-none"
+                placeholder="Street Address"
+              />
+
+              <input
+                class="w-full border rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 outline-none"
+                placeholder="Phone Number"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- PAYMENT -->
+        <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
+          <div class="bg-emerald-600 text-white px-6 py-3 font-semibold">Payment Method</div>
+
+          <div class="p-6 space-y-4">
+            <!-- CASH -->
+            <div
+              class="flex justify-between items-center border rounded-xl p-4 cursor-pointer hover:border-emerald-500 transition bg-emerald-50"
+            >
+              <div>
+                <p class="font-medium text-gray-800">Cash on Delivery</p>
+                <p class="text-sm text-gray-500">Pay when your order arrives</p>
+              </div>
+              <i class="fa-solid fa-circle-check text-emerald-600 text-xl"></i>
+            </div>
+
+            <!-- ONLINE -->
+            <div
+              class="flex justify-between items-center border rounded-xl p-4 cursor-pointer hover:border-emerald-500 transition"
+            >
+              <div>
+                <p class="font-medium text-gray-800">Pay Online</p>
+                <p class="text-sm text-gray-500">Credit/Debit Card</p>
+              </div>
+              <div class="w-5 h-5 border rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE -->
+      <div class="space-y-6">
+        <!-- ORDER SUMMARY -->
+        <div class="bg-white rounded-2xl shadow-md border border-gray-100 overflow-hidden">
+          <div class="bg-emerald-600 text-white px-6 py-3 font-semibold">Order Summary</div>
+
+          <div class="p-6 space-y-4">
+            <!-- ITEM -->
+            <div class="flex justify-between text-sm">
+              <span>Woman Shirt</span>
+              <span>298 EGP</span>
+            </div>
+
+            <div class="flex justify-between text-sm">
+              <span>Knitted Cardigan</span>
+              <span>499 EGP</span>
+            </div>
+
+            <div class="flex justify-between text-sm">
+              <span>Woman Shawl</span>
+              <span>698 EGP</span>
+            </div>
+
+            <hr />
+
+            <div class="flex justify-between text-sm text-gray-500">
+              <span>Subtotal</span>
+              <span>1,494 EGP</span>
+            </div>
+
+            <div class="flex justify-between text-sm text-emerald-600">
+              <span>Shipping</span>
+              <span>FREE</span>
+            </div>
+
+            <div class="flex justify-between font-bold text-lg text-gray-800">
+              <span>Total</span>
+              <span class="text-emerald-600">1,494 EGP</span>
+            </div>
+
+            <button
+              class="w-full bg-emerald-600 text-white py-3 rounded-xl mt-4 hover:bg-emerald-700 hover:scale-[1.02] transition shadow-md"
+            >
+              Place Order
+            </button>
+
+            <!-- BADGES -->
+            <div class="flex justify-between text-xs text-gray-400 mt-3">
+              <span>🔒 Secure</span>
+              <span>🚚 Fast Delivery</span>
+              <span>💳 Easy Payment</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -38,7 +38,11 @@
       {{ 'allProducts.main.label' | translate }}
     </span>
 
+<<<<<<< HEAD
     <div class="grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-6">
+=======
+    <div class="grid grid-cols-4 gap-6">
+>>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
       @for (product of productList(); track product.id) {
         <app-product-card [product]="product" />
       }

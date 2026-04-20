@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 import { RenderMode } from '@angular/ssr';
+=======
+>>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
 import { BrandProductsComponent } from './features/brand-products/brand-products.component';
 import { SpiceficCatigoryComponent } from './features/spicefic-catigory/spicefic-catigory.component';
 import { Component } from '@angular/core';
@@ -67,7 +70,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/orders/orders.component').then((c) => c.OrdersComponent),
     title: 'Orders',
+<<<<<<< HEAD
     canActivate: [authGuard],
+=======
+    // canActivate: [authGuard],
+>>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
   },
 
   {
@@ -75,7 +82,10 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/profile/profile.component').then((c) => c.ProfileComponent),
     title: 'Profile',
+<<<<<<< HEAD
     canActivate: [authGuard],
+=======
+>>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
   },
   {
     path: 'allProduct',

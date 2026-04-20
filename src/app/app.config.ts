@@ -3,12 +3,16 @@ import {
   importProvidersFrom,
   provideBrowserGlobalErrorListeners,
 } from '@angular/core';
+<<<<<<< HEAD
 import {
   provideRouter,
   withHashLocation,
   withInMemoryScrolling,
   withViewTransitions,
 } from '@angular/router';
+=======
+import { provideRouter, withInMemoryScrolling, withViewTransitions } from '@angular/router';
+>>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
@@ -27,7 +31,10 @@ export const appConfig: ApplicationConfig = {
       routes,
       withInMemoryScrolling({ scrollPositionRestoration: 'top' }),
       withViewTransitions(),
+<<<<<<< HEAD
       withHashLocation(),
+=======
+>>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
     ),
     provideClientHydration(withEventReplay()),
     provideToastr(),

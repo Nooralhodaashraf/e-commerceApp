@@ -1,0 +1,86 @@
+<!-- MAIN -->
+<div class="lg:col-span-3 space-y-8">
+  <!-- PROFILE -->
+  <div class="bg-white/90 backdrop-blur rounded-2xl shadow-md p-7 border border-gray-100">
+    <div class="flex items-center gap-3 mb-6">
+      <div
+        class="w-11 h-11 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center shadow-sm"
+      >
+        <i class="fa-solid fa-user"></i>
+      </div>
+      <div>
+        <h3 class="font-semibold text-gray-800 text-lg">Profile Information</h3>
+        <p class="text-sm text-gray-500">Update your personal details</p>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <input
+        class="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 outline-none transition"
+        placeholder="Full Name"
+      />
+      <input
+        class="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 outline-none transition"
+        placeholder="Email Address"
+      />
+      <input
+        class="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-emerald-500 outline-none transition"
+        placeholder="Phone Number"
+      />
+
+      <button
+        class="bg-emerald-600 text-white px-6 py-3 rounded-xl hover:bg-emerald-700 hover:scale-[1.02] transition shadow-md"
+      >
+        Save Changes
+      </button>
+    </div>
+  </div>
+
+  <!-- ACCOUNT INFO -->
+  <div class="bg-white/90 backdrop-blur rounded-2xl shadow-md p-6 border border-gray-100">
+    <h3 class="font-semibold text-gray-800 mb-4 text-lg">Account Information</h3>
+
+    <div class="flex flex-col sm:flex-row sm:justify-between items-center gap-3">
+      <p class="text-sm text-gray-500">User ID: 123456</p>
+      <span class="bg-emerald-100 text-emerald-600 px-4 py-1 rounded-full text-xs font-medium">
+        User
+      </span>
+    </div>
+  </div>
+
+  <!-- PASSWORD -->
+  <div class="bg-white/90 backdrop-blur rounded-2xl shadow-md p-7 border border-orange-200">
+    <div class="flex items-center gap-3 mb-6">
+      <div
+        class="w-11 h-11 bg-orange-100 text-orange-500 rounded-full flex items-center justify-center shadow-sm"
+      >
+        <i class="fa-solid fa-lock"></i>
+      </div>
+      <div>
+        <h3 class="font-semibold text-gray-800 text-lg">Change Password</h3>
+        <p class="text-sm text-gray-500">Update your account password</p>
+      </div>
+    </div>
+
+    <div class="space-y-4">
+      <input
+        class="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-400 outline-none transition"
+        placeholder="Current Password"
+      />
+      <input
+        class="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-400 outline-none transition"
+        placeholder="New Password"
+      />
+      <input
+        class="w-full border border-gray-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-orange-400 outline-none transition"
+        placeholder="Confirm New Password"
+      />
+
+      <button
+        class="bg-orange-500 text-white px-6 py-3 rounded-xl hover:bg-orange-600 hover:scale-[1.02] transition shadow-md"
+      >
+        Change Password
+      </button>
+    </div>
+  </div>
+</div>

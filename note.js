@@ -18,8 +18,12 @@
 ////details||||||||||||||||||||
 ////changePassword ----- resendCode |||||||||||||||||||
 ////review 
+<<<<<<< HEAD
 ////setting
 ////address
+=======
+
+>>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
 
 //used api's:
 ////get catigories 

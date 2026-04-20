@@ -1,8 +1,15 @@
+<<<<<<< HEAD
 import { Component, inject, OnInit, PLATFORM_ID, signal } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { CartService } from '../../core/services/cart.service';
 import { isPlatformBrowser } from '@angular/common';
+=======
+import { Component, inject, OnInit, signal } from '@angular/core';
+import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { CartService } from '../../core/services/cart.service';
+>>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
 
 @Component({
   selector: 'app-check-out',
@@ -15,8 +22,11 @@ export class CheckOutComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   private readonly router = inject(Router);
   private readonly cartService = inject(CartService);
+<<<<<<< HEAD
   private readonly pLATFORM_ID = inject(PLATFORM_ID);
 
+=======
+>>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
   flag = signal<string>('cash');
 
   checkOut: FormGroup = this.fb.group({
@@ -29,9 +39,13 @@ export class CheckOutComponent implements OnInit {
 
   cartID = signal<string>('');
   ngOnInit(): void {
+<<<<<<< HEAD
     if (isPlatformBrowser(this.pLATFORM_ID)) {
       this.getCartId();
     }
+=======
+    this.getCartId();
+>>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
   }
 
   submiteForm(): void {
