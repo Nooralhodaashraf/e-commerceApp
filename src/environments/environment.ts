@@ -1,4 +1,4 @@
 export const environment = {
-  url: `e-commerce-app.vercel.app`,
+  url: `https://reliable-sawine-f9c3a0.netlify.app`,
   baseUrl: 'https://ecommerce.routemisr.com',
 };
