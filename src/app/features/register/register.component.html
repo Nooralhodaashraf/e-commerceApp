@@ -1,0 +1,285 @@
+<section
+  class="grow max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-20 flex flex-col lg:flex-row gap-14 lg:gap-24 bg-linear-to-br from-slate-900 via-slate-800 to-green-900/70 text-white rounded-3xl"
+>
+  <!-- !---------------------------------- Left Side  !---------------------------------- -->
+  <div class="w-full lg:w-1/2 space-y-12">
+    <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight leading-tight">
+      {{ 'register.hero.title' | translate }}
+      <span class="text-green-400">
+        {{ 'register.hero.brand' | translate }}
+      </span>
+    </h1>
+
+    <p class="text-lg text-gray-300 leading-relaxed max-w-lg">
+      {{ 'register.hero.description' | translate }}
+    </p>
+
+    <ul class="space-y-7">
+      <li class="flex items-start gap-4 group">
+        <div
+          class="size-12 rounded-full bg-white/10 text-green-400 grid place-items-center shrink-0 backdrop-blur transition group-hover:bg-green-500 group-hover:text-white shadow-lg"
+        >
+          <i class="fa-solid fa-star text-lg"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-semibold group-hover:text-green-400 transition">
+            {{ 'register.hero.features.premium.title' | translate }}
+          </h3>
+          <p class="text-sm text-gray-400 mt-1">
+            {{ 'register.hero.features.premium.desc' | translate }}
+          </p>
+        </div>
+      </li>
+
+      <li class="flex items-start gap-4 group">
+        <div
+          class="size-12 rounded-full bg-white/10 text-green-400 grid place-items-center shrink-0 backdrop-blur transition group-hover:bg-green-500 group-hover:text-white shadow-lg"
+        >
+          <i class="fa-solid fa-truck-fast text-lg"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-semibold group-hover:text-green-400 transition">
+            {{ 'register.hero.features.fast.title' | translate }}
+          </h3>
+          <p class="text-sm text-gray-400 mt-1">
+            {{ 'register.hero.features.fast.desc' | translate }}
+          </p>
+        </div>
+      </li>
+
+      <li class="flex items-start gap-4 group">
+        <div
+          class="size-12 rounded-full bg-white/10 text-green-400 grid place-items-center shrink-0 backdrop-blur transition group-hover:bg-green-500 group-hover:text-white shadow-lg"
+        >
+          <i class="fa-solid fa-shield-halved text-lg"></i>
+        </div>
+        <div>
+          <h3 class="text-base font-semibold group-hover:text-green-400 transition">
+            {{ 'register.hero.features.secure.title' | translate }}
+          </h3>
+          <p class="text-sm text-gray-400 mt-1">
+            {{ 'register.hero.features.secure.desc' | translate }}
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    <figure class="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/10 shadow-xl p-6">
+      <figcaption class="flex items-center gap-3 mb-3">
+        <img
+          src="https://i.pravatar.cc/150?img=47"
+          class="size-10 rounded-full object-cover ring-2 ring-green-400/40"
+        />
+
+        <div>
+          <h4 class="text-sm font-semibold text-white">
+            {{ 'register.hero.testimonial.name' | translate }}
+          </h4>
+
+          <div class="text-yellow-400 text-xs flex gap-0.5">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-solid fa-star"></i>
+          </div>
+        </div>
+      </figcaption>
+
+      <blockquote class="text-sm text-gray-300 italic leading-relaxed">
+        "{{ 'register.hero.testimonial.text' | translate }}"
+      </blockquote>
+    </figure>
+  </div>
+
+  <!-- !---------------------------------- RIGHT SIDE FORM  !---------------------------------- -->
+  <div
+    class="w-full lg:w-1/2 max-w-lg mx-auto lg:mx-0 bg-white/95 backdrop-blur-xl rounded-3xl shadow-2xl border border-white/20 p-8 sm:p-10 text-gray-800"
+  >
+    <div class="text-center mb-10">
+      <h2 class="text-2xl font-extrabold text-slate-800">
+        {{ 'register.form.title' | translate }}
+      </h2>
+
+      <p class="text-sm text-gray-500 mt-2">
+        {{ 'register.form.subtitle' | translate }}
+      </p>
+    </div>
+
+    <form class="space-y-5" [formGroup]="registerForm" (ngSubmit)="submitForm()">
+      <!-- NAME -->
+      <div>
+        <label class="block text-sm text-gray-600 mb-1.5">
+          {{ 'register.form.name' | translate }}
+        </label>
+
+        <input
+          type="text"
+          formControlName="name"
+          [placeholder]="'register.form.namePlaceholder' | translate"
+          class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition shadow-sm focus:shadow-md"
+        />
+      </div>
+
+      @if (registerForm.get('name')?.invalid && registerForm.get('name')?.touched) {
+        <div class="bg-red-100 border-l-4 mt-1.5 rounded-2xl border-red-500 text-red-700 p-4">
+          @if (registerForm.get('name')?.hasError('required')) {
+            <p class="font-semibold text-[.875rem]">
+              {{ 'register.validation.nameRequired' | translate }}
+            </p>
+          }
+
+          @if (registerForm.get('name')?.hasError('minlength')) {
+            <p class="font-semibold text-[.875rem]">
+              {{ 'register.validation.nameMin' | translate }}
+            </p>
+          }
+        </div>
+      }
+
+      <!-- EMAIL -->
+      <div>
+        <label class="block text-sm text-gray-600 mb-1.5">
+          {{ 'register.form.email' | translate }}
+        </label>
+
+        <input
+          type="email"
+          formControlName="email"
+          [placeholder]="'register.form.emailPlaceholder' | translate"
+          class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition shadow-sm focus:shadow-md"
+        />
+      </div>
+
+      @if (registerForm.get('email')?.invalid && registerForm.get('email')?.touched) {
+        <div class="bg-red-100 border-l-4 mt-1.5 rounded-2xl border-red-500 text-red-700 p-4">
+          @if (registerForm.get('email')?.hasError('required')) {
+            <p class="font-semibold text-[.875rem]">
+              {{ 'register.validation.emailRequired' | translate }}
+            </p>
+          }
+
+          @if (registerForm.get('email')?.hasError('email')) {
+            <p class="font-semibold text-[.875rem]">
+              {{ 'register.validation.emailInvalid' | translate }}
+            </p>
+          }
+        </div>
+      }
+
+      <!-- PASSWORD -->
+      <div>
+        <label class="block text-sm text-gray-600 mb-1.5">
+          {{ 'register.form.password' | translate }}
+        </label>
+
+        <input
+          type="password"
+          formControlName="password"
+          [placeholder]="'register.form.passwordPlaceholder' | translate"
+          class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition shadow-sm focus:shadow-md"
+        />
+      </div>
+
+      @if (registerForm.get('password')?.invalid && registerForm.get('password')?.touched) {
+        <div class="bg-red-100 border-l-4 mt-1.5 rounded-2xl border-red-500 text-red-700 p-4">
+          @if (registerForm.get('password')?.hasError('required')) {
+            <p class="font-semibold text-[.875rem]">
+              {{ 'register.validation.passwordRequired' | translate }}
+            </p>
+          }
+
+          @if (registerForm.get('password')?.hasError('pattern')) {
+            <p class="font-semibold text-[.875rem]">
+              {{ 'register.validation.passwordPattern' | translate }}
+            </p>
+          }
+        </div>
+      }
+
+      <!-- RE PASSWORD -->
+      <div>
+        <label class="block text-sm text-gray-600 mb-1.5">
+          {{ 'register.form.confirmPassword' | translate }}
+        </label>
+
+        <input
+          type="password"
+          formControlName="rePassword"
+          [placeholder]="'register.form.confirmPasswordPlaceholder' | translate"
+          class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition shadow-sm focus:shadow-md"
+        />
+      </div>
+
+      @if (registerForm.get('rePassword')?.invalid && registerForm.get('rePassword')?.touched) {
+        <div class="bg-red-100 border-l-4 mt-1.5 rounded-2xl border-red-500 text-red-700 p-4">
+          @if (registerForm.get('rePassword')?.hasError('required')) {
+            <p class="font-semibold text-[.875rem]">
+              {{ 'register.validation.rePasswordRequired' | translate }}
+            </p>
+          }
+
+          @if (registerForm.get('rePassword')?.hasError('misMach')) {
+            <p class="font-semibold text-[.875rem]">
+              {{ 'register.validation.rePasswordMismatch' | translate }}
+            </p>
+          }
+        </div>
+      }
+
+      <!-- PHONE -->
+      <div>
+        <label class="block text-sm text-gray-600 mb-1.5">
+          {{ 'register.form.phone' | translate }}
+        </label>
+
+        <input
+          type="tel"
+          formControlName="phone"
+          [placeholder]="'register.form.phonePlaceholder' | translate"
+          class="w-full px-4 py-3 rounded-xl border border-gray-200 outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 text-sm transition shadow-sm focus:shadow-md"
+        />
+      </div>
+
+      @if (registerForm.get('phone')?.invalid && registerForm.get('phone')?.touched) {
+        <div class="bg-red-100 border-l-4 mt-1.5 rounded-2xl border-red-500 text-red-700 p-4">
+          @if (registerForm.get('phone')?.hasError('required')) {
+            <p class="font-semibold text-[.875rem]">
+              {{ 'register.validation.phoneRequired' | translate }}
+            </p>
+          }
+
+          @if (registerForm.get('phone')?.hasError('pattern')) {
+            <p class="font-semibold text-[.875rem]">
+              {{ 'register.validation.phoneInvalid' | translate }}
+            </p>
+          }
+        </div>
+      }
+
+      <!-- BUTTON -->
+      <button
+        type="submit"
+        class="w-full bg-linear-to-r from-green-600 to-emerald-500 hover:from-green-700 hover:to-emerald-600 text-white font-semibold py-3 rounded-xl transition flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
+      >
+        <i class="fa-solid fa-user-plus"></i>
+        {{ 'register.form.button' | translate }}
+      </button>
+
+      @if (msgError) {
+        <div class="bg-red-100 border-l-4 mt-1.5 rounded-2xl border-red-500 text-red-700 p-4">
+          <p class="font-semibold text-[.875rem]">
+            {{ msgError || ('register.error.msgError' | translate) }}
+          </p>
+        </div>
+      }
+    </form>
+
+    <p class="text-center text-sm text-gray-600 mt-8">
+      {{ 'register.form.loginLink' | translate }}
+      <a routerLink="/login" class="text-green-600 font-medium hover:underline">
+        {{ 'register.form.loginAction' | translate }}
+      </a>
+    </p>
+  </div>
+</section>

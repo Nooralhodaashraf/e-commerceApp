@@ -1,0 +1,204 @@
+{
+   "login":{
+  "hero": {
+    "title": "FreshCart - Your One-Stop Shop for",
+    "highlight": "Fresh Products",
+    "description": "Join thousands of happy customers who trust FreshCart for their daily grocery needs",
+
+    "features": {
+      "delivery": "Free Delivery",
+      "secure": "Secure Payment",
+      "support": "24/7 Support"
+    }
+  },
+
+  "auth": {
+    "brand": "FreshCart",
+    "welcome": "Welcome Back!",
+    "subtitle": "Sign in to continue your fresh shopping experience",
+
+    "email": "Email Address",
+    "emailPlaceholder": "Enter your email",
+
+    "password": "Password",
+    "passwordPlaceholder": "Enter your password",
+
+    "forgotPassword": "Forgot Password?",
+
+    "signIn": "Sign In",
+
+    "noAccount": "New to FreshCart?",
+    "createAccount": "Create an account"
+  },
+
+  "validation": {
+    "emailRequired": "Email is Required",
+    "emailInvalid": "Please enter a valid email address.",
+    "passwordRequired": "Password is required.",
+    "passwordPattern": "Must contain at least 8 chars, 1 uppercase, 1 lowercase, 1 number, and 1 special"
+  },
+
+  "footer": {
+    "secure": "SSL Secured",
+    "users": "50K+ Users",
+    "rating": "4.9 Rating"
+  }
+},
+
+ "register": {
+    "hero": {
+      "title": "Welcome to",
+      "brand": "FreshCart",
+      "description": "Join thousands of happy customers who enjoy fresh groceries delivered right to their doorstep.",
+
+      "features": {
+        "premium": {
+          "title": "Premium Quality",
+          "desc": "Premium quality products sourced from trusted suppliers."
+        },
+        "fast": {
+          "title": "Fast Delivery",
+          "desc": "Same-day delivery available in most areas"
+        },
+        "secure": {
+          "title": "Secure Shopping",
+          "desc": "Your data and payments are completely secure"
+        }
+      },
+
+      "testimonial": {
+        "name": "Sarah Johnson",
+        "text": "FreshCart has transformed my shopping experience. The quality is outstanding and delivery always on time."
+      }
+    },
+
+    "form": {
+      "title": "Create Your Account",
+      "subtitle": "Start your fresh journey with us today",
+
+      "name": "Name*",
+      "namePlaceholder": "Ali",
+
+      "email": "Email*",
+      "emailPlaceholder": "ali@example.com",
+
+      "password": "Password*",
+      "passwordPlaceholder": "create a strong password",
+
+      "confirmPassword": "Confirm Password*",
+      "confirmPasswordPlaceholder": "confirm your password",
+
+      "phone": "Phone Number*",
+      "phonePlaceholder": "+20 123 456 7890",
+
+      "button": "Create My Account",
+      "loginLink": "Already have an account?",
+      "loginAction": "Sign In"
+    },
+
+    "validation": {
+      "nameRequired": "Full Name is Required",
+      "nameMin": "Full Name must contain at least 3 characters",
+
+      "emailRequired": "Email is Required",
+      "emailInvalid": "Please enter a valid email address.",
+
+      "passwordRequired": "Password is required.",
+      "passwordPattern": "Must contain at least 8 chars, 1 uppercase, 1 lowercase, 1 number, and 1 special",
+
+      "rePasswordRequired": "Please confirm your password.",
+      "rePasswordMismatch": "Passwords do not match.",
+
+      "phoneRequired": "Phone is Required",
+      "phoneInvalid": "Please enter a valid phone number."
+    },
+
+    "error": {
+      "msgError": "Something went wrong. Please try again."
+    }
+  },
+  "allProducts": {
+  "breadcrumb": {
+    "home": "Home",
+    "allProducts": "All Products"
+  },
+
+  "header": {
+    "title": "All Products",
+    "subtitle": "Explore our complete product collection"
+  },
+
+  "main": {
+    "label": "showing All Products"
+  }
+},"brandProducts": {
+  "breadcrumb": {
+    "home": "Home",
+    "categories": "Categories"
+  },
+
+  "header": {
+    "browse": "Browse products in"
+  },
+
+  "filters": {
+    "active": "Active Filters:",
+    "clear": "Clear all"
+  },
+
+  "products": {
+    "showing": "Showing",
+    "items": "products"
+  }
+},"brands": {
+  "title": "Our Brands",
+  "subtitle": "Trusted & Popular Brands",
+
+  "search": {
+    "placeholder": "Search brands..."
+  }
+},"cart": {
+  "header": {
+    "title": "Shopping Cart",
+    "items": "items in your cart",
+        "have":"you have"
+
+  },
+
+  "item": {
+    "inStock": "in stock",
+    "outOfStock": "Out Of stock",
+    "perUnit": "per unit",
+    "total": "Total"
+  },
+
+  "empty": {
+    "title": "Your cart is empty",
+    "description": "Looks like you haven't added anything to your cart yet. Start exploring our products!",
+    "button": "Start Shopping"
+  },
+
+  "actions": {
+    "continue": "Continue Shopping",
+    "clear": "Clear all items"
+  },
+
+  "summary": {
+    "title": "Order Summary",
+    "items": "items in your cart",
+    "freeShipping": "Free Shipping!",
+    "freeShippingDesc": "You qualify for free delivery",
+    "shipping": "Shipping",
+    "free": "FREE",
+    "total": "Total",
+    "checkout": "Secure Checkout"
+  },
+
+  "badges": {
+    "secure": "Secure Payment",
+    "fast": "Fast Delivery"
+  }
+}
+
+
+}

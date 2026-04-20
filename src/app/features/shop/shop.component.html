@@ -1,0 +1,60 @@
+<section>
+  <header class="bg-linear-to-br from-primary-700 to-primary-400 h-60">
+    <div class="p-9">
+      <div class="links text-white">
+        <a routerLink="/" class="hover:underline duration-300">Home </a>/
+        <a
+          routerLink="/allProduct"
+          class="text-white/60 hover:text-white hover:underline duration-300"
+        >
+          Shop Now
+        </a>
+      </div>
+      <div class="flex items-center gap-4 p-6 rounded-2xl text-white">
+        <!-- icon box -->
+        <div class="bg-white/20 p-4 rounded-xl">
+          <!-- icon -->
+          <i class="fa-solid fa-box-open text-white text-xl"></i>
+        </div>
+
+        <!-- text -->
+        <div>
+          <h1 class="text-3xl font-bold">All Products</h1>
+          <p class="text-white/80">Explore our complete product collection</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="p-3">
+    <span class="px-2 text-primary-700 font-semibold"> showing All Products </span>
+    <div class="grid grid-cols-4 gap-6">
+      @for (
+        product of productList()
+          | paginate
+            : { id: 'foo', itemsPerPage: pageSize(), currentPage: cp(), totalItems: total() };
+        track product.id
+      ) {
+        <app-product-card [product]="product" />
+      }
+    </div>
+
+    <div class="flex justify-center items-center p-8">
+      <pagination-controls
+        (pageChange)="pageChanged($event)"
+        id="foo"
+        [maxSize]="9"
+        [directionLinks]="true"
+        [autoHide]="true"
+        [responsive]="true"
+        previousLabel="Previous"
+        nextLabel="Next"
+        screenReaderPaginationLabel="Pagination"
+        screenReaderPageLabel="page"
+        screenReaderCurrentLabel="You're on page"
+        class="my-pagination"
+      >
+      </pagination-controls>
+    </div>
+  </main>
+</section>

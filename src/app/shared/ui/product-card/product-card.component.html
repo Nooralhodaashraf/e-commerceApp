@@ -1,0 +1,126 @@
+<div
+  class="bg-white border border-gray-100 rounded-2xl p-4 shadow-sm hover:shadow-md transition-shadow duration-300 group font-sans"
+>
+  <!-- hover glow -->
+  <div
+    class="absolute inset-0 bg-linear-to-br from-emerald-500/0 to-emerald-500/10 opacity-0 group-hover:opacity-100 transition"
+  ></div>
+
+  <!-- top shine -->
+  <div
+    class="absolute -top-20 left-0 w-full h-40 bg-white/30 blur-2xl opacity-0 group-hover:opacity-100 transition"
+  ></div>
+
+  <div class="p-2 group-hover:scale-[1.02] transition">
+    <div class="relative">
+      <div
+        id="product-card"
+        class="bg-white/90 backdrop-blur rounded-2xl overflow-hidden hover:shadow-2xl transition-all duration-500 group hover:-translate-y-2 hover:scale-[1.02]"
+      >
+        <!-- BUTTONS -->
+        <div class="relative overflow-hidden">
+          <img
+            class="w-full h-60 object-contain bg-white transition-transform duration-700 group-hover:scale-110"
+            [alt]="product().slug"
+            [src]="product().imageCover"
+          />
+
+          <!-- subtle glow -->
+          <div
+            class="absolute inset-0 bg-linear-to-t from-black/5 to-transparent opacity-0 group-hover:opacity-100 transition"
+          ></div>
+
+          <div class="absolute top-3 right-3 flex flex-col space-y-2">
+            <button
+              class="bg-white/90 backdrop-blur h-9 w-9 rounded-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 hover:text-red-500 text-gray-600 transition-all duration-300"
+              title="Add to wishlist"
+              tabindex="0"
+              (click)="addToWIshlist(product()._id)"
+            >
+              <i class="fa fa-heart transition-transform group-hover:scale-110"></i>
+            </button>
+
+            <button
+              class="w-10 h-10 bg-white shadow-sm border border-gray-100 rounded-full flex items-center justify-center text-gray-600 hover:bg-emerald-600 hover:text-white transition-all"
+            >
+              <i class="fas fa-sync-alt"></i>
+            </button>
+
+            <a
+              class="bg-white/90 backdrop-blur h-9 w-9 rounded-full flex items-center justify-center shadow-md hover:shadow-lg hover:scale-110 hover:text-primary-600 text-gray-600 transition-all duration-300"
+              [routerLink]="['/details', product().id, product().slug]"
+            >
+              <i class="fa fa-eye transition-transform group-hover:scale-110"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- CONTENT -->
+        <div class="p-4">
+          <div class="text-xs text-gray-400 mb-1 uppercase tracking-wider font-medium"></div>
+
+          <h3 class="font-semibold mb-1 cursor-pointer text-gray-800 leading-snug" title="">
+            <a
+              class="line-clamp-2 hover:text-primary-600 transition-all duration-300 hover:tracking-wide"
+              href=""
+              >{{ product().title.split(' ', 3).join(' ') }}
+            </a>
+          </h3>
+
+          <div class="flex items-center mb-2">
+            <div class="flex text-yellow-400 mr-2 gap-0.5">
+              <div class="flex text-yellow-400 text-sm gap-0.5 drop-shadow-sm">
+                @for (i of starsArray; track $index) {
+                  @if (i < product().ratingsAverage) {
+                    <i class="fas fa-star"></i>
+                  } @else if (i > product().ratingsAverage) {
+                    <i class="far fa-star text-gray-300"></i>
+                  }
+                }
+              </div>
+            </div>
+            <span class="text-xs text-gray-500">
+              {{ product().ratingsAverage }} ( {{ product().ratingsQuantity }} )</span
+            >
+          </div>
+
+          <div class="flex items-center justify-between mt-3">
+            <!-- PRICE -->
+            <div>
+              <span class="text-lg font-extrabold text-gray-800 tracking-tight"
+                >{{ product().price | currency: 'EPG' }}
+              </span>
+            </div>
+
+            <!-- ADD TO CART -->
+            <button
+              class="h-10 w-10 rounded-full flex items-center justify-center bg-linear-to-r from-primary-500 to-primary-700 text-white shadow-md hover:shadow-xl hover:scale-110 active:scale-95 transition-all duration-300 disabled:opacity-70"
+              tabindex="0"
+              (click)="addToCart(product()._id)"
+            >
+              <i class="fa fa-plus transition-transform group-hover:rotate-90"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- hover glow -->
+        <div
+          class="absolute inset-0 rounded-2xl ring-0 group-hover:ring-2 ring-primary-500/20 transition-all pointer-events-none"
+        ></div>
+
+        @if (product().priceAfterDiscount) {
+          <div class="absolute top-3 left-3">
+            <span class="bg-red-500 text-white text-xs px-2 py-1 rounded"
+              >{{
+                (100 - (product().priceAfterDiscount / product().price) * 100)
+                  .toString()
+                  .split('', 5)
+                  .join('')
+              }}%</span
+            >
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,73 @@
+<section>
+  <header class="bg-linear-to-br from-primary-700 to-primary-400 h-60">
+    <div class="p-9">
+      <div class="links text-white">
+        <a routerLink="/" class="hover:underline duration-300">Home </a>/
+        <a
+          routerLink="/allProduct"
+          class="text-white/60 hover:text-white hover:underline duration-300"
+        >
+          All Catigories
+        </a>
+      </div>
+      <div class="flex items-center gap-4 p-6 rounded-2xl text-white">
+        <!-- icon box -->
+        <div class="bg-white/20 p-4 rounded-xl">
+          <!-- icon -->
+          <i class="fa-solid fa-box-open text-white text-xl"></i>
+        </div>
+
+        <!-- text -->
+        <div>
+          <h1 class="text-3xl font-bold">All Products</h1>
+          <p class="text-white/80">Explore our complete product collection</p>
+        </div>
+      </div>
+    </div>
+  </header>
+  <main class="mx-auto container py-8">
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-6 gap-8">
+      @for (catigory of catigoryList; track catigory._id) {
+        <div class="mt-8" [routerLink]="['/spicifcCatigory', catigory._id]">
+          <div
+            class="group relative bg-white shadow-md hover:shadow-2xl rounded-3xl p-8 flex flex-col items-center transition-all duration-500 hover:-translate-y-3 hover:scale-[1.05] border border-gray-100 cursor-pointer overflow-hidden"
+          >
+            <!-- image -->
+            <div
+              class="relative mb-5 p-4 rounded-full bg-linear-to-br from-emerald-100 to-emerald-50 group-hover:from-emerald-200 group-hover:to-emerald-100 transition"
+            >
+              <img
+                [src]="catigory.image"
+                class="w-20 h-20 rounded-full object-cover transition-transform duration-500 group-hover:scale-110"
+                [alt]="catigory.slug"
+              />
+            </div>
+
+            <!-- title -->
+            <h3
+              class="text-base font-semibold text-gray-700 group-hover:text-emerald-600 w-full transition-colors"
+            >
+              {{ catigory.name }}
+            </h3>
+
+            <!-- underline -->
+            <div
+              class="h-0.5 w-0 bg-emerald-500 mt-3 group-hover:w-12 transition-all duration-300 rounded-full"
+            ></div>
+
+            <!-- 🔥 overlay (show more) -->
+            <div
+              class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center"
+            >
+              <span
+                class="text-white text-sm font-semibold tracking-wide bg-transparent px-4 py-2 rounded-xl"
+              >
+                Show More
+              </span>
+            </div>
+          </div>
+        </div>
+      }
+    </div>
+  </main>
+</section>

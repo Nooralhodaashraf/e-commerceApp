@@ -1,0 +1,130 @@
+<section class="min-h-screen bg-gray-50">
+  <!-- HEADER -->
+  <div class="bg-linear-to-r from-emerald-600 to-emerald-400 text-white py-10 px-6">
+    <div class="max-w-7xl mx-auto">
+      <!-- BREADCRUMB -->
+      <p class="text-sm opacity-80 mb-3">
+        {{ 'brandProducts.breadcrumb.home' | translate }} /
+        {{ 'brandProducts.breadcrumb.categories' | translate }} /
+        {{ brandInfo().name }}
+      </p>
+
+      <!-- TITLE -->
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
+          <img class="w-full rounded-xl" [src]="brandInfo().image" [alt]="brandInfo().slug" />
+        </div>
+
+        <div>
+          <h2 class="text-3xl font-extrabold">{{ brandInfo().name }}</h2>
+          <p class="text-sm opacity-80">
+            {{ 'brandProducts.header.browse' | translate }}
+            {{ brandInfo().name }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="max-w-7xl mx-auto px-4 py-10">
+    <!-- FILTERS -->
+    <div class="flex flex-wrap items-center gap-3 mb-6 text-sm">
+      <span class="text-gray-500 flex items-center gap-2">
+        <i class="fa-solid fa-filter"></i>
+        {{ 'brandProducts.filters.active' | translate }}
+      </span>
+
+      <span class="bg-emerald-100 text-emerald-600 px-3 py-1 rounded-full flex items-center gap-2">
+        {{ brandInfo().name }}
+        <i class="fa-solid fa-xmark text-xs cursor-pointer"></i>
+      </span>
+
+      <button class="text-gray-400 hover:text-emerald-600">
+        {{ 'brandProducts.filters.clear' | translate }}
+      </button>
+    </div>
+
+    <p class="text-sm text-gray-500 mb-6">
+      {{ 'brandProducts.products.showing' | translate }}
+      {{ productList().length }}
+      {{ 'brandProducts.products.items' | translate }}
+    </p>
+
+    <!-- PRODUCTS GRID -->
+    <div class="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+      @for (product of productList(); track product._id) {
+        <div
+          class="group bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 p-4 relative"
+        >
+          <!-- ACTION ICONS -->
+          <div
+            class="absolute right-3 top-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition"
+          >
+            <button
+              class="w-9 h-9 rounded-full bg-white shadow flex items-center justify-center hover:text-emerald-600"
+            >
+              <i class="fa-regular fa-heart"></i>
+            </button>
+
+            <button
+              class="w-9 h-9 rounded-full bg-white shadow flex items-center justify-center hover:text-emerald-600"
+            >
+              <i class="fa-solid fa-rotate"></i>
+            </button>
+
+            <button
+              class="w-9 h-9 rounded-full bg-white shadow flex items-center justify-center hover:text-emerald-600"
+            >
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+
+          <!-- IMAGE -->
+          <div class="flex justify-center mb-4">
+            <img
+              [src]="product.imageCover"
+              class="h-40 object-contain transition-transform duration-500 group-hover:scale-105"
+            />
+          </div>
+
+          <!-- CATEGORY -->
+          <p class="text-xs text-gray-400">{{ product.category }}</p>
+
+          <!-- NAME -->
+          <h3 class="text-sm font-semibold text-gray-800">
+            {{ product.title }}
+          </h3>
+
+          <!-- RATING -->
+          <div class="flex items-center mb-2">
+            <div class="flex text-yellow-400 text-sm gap-0.5">
+              @for (i of [1, 2, 3, 4, 5]; track $index) {
+                @if (i < product.ratingsAverage) {
+                  <i class="fas fa-star"></i>
+                } @else {
+                  <i class="far fa-star text-gray-300"></i>
+                }
+              }
+            </div>
+
+            <span class="text-xs text-gray-500">
+              {{ product.ratingsAverage }} ({{ product.ratingsQuantity }})
+            </span>
+          </div>
+
+          <!-- PRICE + BUTTON -->
+          <div class="flex justify-between items-center mt-4">
+            <p class="font-bold text-gray-800">{{ product.price }} EGP</p>
+
+            <button
+              class="w-10 h-10 bg-emerald-600 text-white rounded-full flex items-center justify-center hover:bg-emerald-700 transition hover:scale-110"
+            >
+              <i class="fa-solid fa-plus"></i>
+            </button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</section>
