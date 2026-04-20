@@ -1,5 +1,5 @@
 export const environment = {
-  url: `.vercel.app`,
+  url: `http://vercel.app`,
 
   baseUrl: 'https://ecommerce.routemisr.com',
 };
