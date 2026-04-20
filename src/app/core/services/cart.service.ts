@@ -41,17 +41,12 @@ export class CartService {
     return this.httpClient.post(environment.baseUrl + `/api/v1/orders/${cartId}`, data);
   }
 
-  createCheckoutSession(cartId: string, shippingAddress: any): Observable<any> {
-    const href = window.location.href;
+  createVisaOrder(cartId: string, data: object): Observable<any> {
     return this.httpClient.post(
-      `${environment.baseUrl}/v1/orders/checkout-session/${cartId}`,
-      {
-        shippingAddress,
-      },
-      { params: { url: href } },
+      environment.baseUrl + `/api/v1/orders/checkout-session/${cartId}?url=${environment.url}`,
+      data,
     );
   }
-
   getAllOrders(id: string): Observable<any> {
     return this.httpClient.get(environment.baseUrl + `/api/v1/orders/user/${id}`);
   }
