@@ -1,5 +1,5 @@
 export const environment = {
-  url: `http://localhost:4200`,
+  url: `e-commerce-app-ial7.vercel.app`,
 
   baseUrl: 'https://ecommerce.routemisr.com',
 };
