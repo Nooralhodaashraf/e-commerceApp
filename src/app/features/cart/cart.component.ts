@@ -7,11 +7,7 @@ import { TranslatePipe } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
-<<<<<<< HEAD
   imports: [RouterLink],
-=======
-  imports: [RouterLink, TranslatePipe],
->>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.css',
 })

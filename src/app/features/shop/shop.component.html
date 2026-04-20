@@ -28,37 +28,35 @@
 
   <main class="p-3">
     <span class="px-2 text-primary-700 font-semibold"> showing All Products </span>
-<<<<<<< HEAD
     <div class="grid lg:grid-cols-4 sm:grid-cols-1 md:grid-cols-2 gap-6">
-=======
-    <div class="grid grid-cols-4 gap-6">
->>>>>>> b22c633ac045141d10986a22d147b1c2e5314756
-      @for (
-        product of productList()
-          | paginate
-            : { id: 'foo', itemsPerPage: pageSize(), currentPage: cp(), totalItems: total() };
-        track product.id
-      ) {
-        <app-product-card [product]="product" />
-      }
-    </div>
+      <div class="grid grid-cols-4 gap-6">
+        @for (
+          product of productList()
+            | paginate
+              : { id: 'foo', itemsPerPage: pageSize(), currentPage: cp(), totalItems: total() };
+          track product.id
+        ) {
+          <app-product-card [product]="product" />
+        }
+      </div>
 
-    <div class="flex justify-center items-center p-8">
-      <pagination-controls
-        (pageChange)="pageChanged($event)"
-        id="foo"
-        [maxSize]="9"
-        [directionLinks]="true"
-        [autoHide]="true"
-        [responsive]="true"
-        previousLabel="Previous"
-        nextLabel="Next"
-        screenReaderPaginationLabel="Pagination"
-        screenReaderPageLabel="page"
-        screenReaderCurrentLabel="You're on page"
-        class="my-pagination"
-      >
-      </pagination-controls>
+      <div class="flex justify-center items-center p-8">
+        <pagination-controls
+          (pageChange)="pageChanged($event)"
+          id="foo"
+          [maxSize]="9"
+          [directionLinks]="true"
+          [autoHide]="true"
+          [responsive]="true"
+          previousLabel="Previous"
+          nextLabel="Next"
+          screenReaderPaginationLabel="Pagination"
+          screenReaderPageLabel="page"
+          screenReaderCurrentLabel="You're on page"
+          class="my-pagination"
+        >
+        </pagination-controls>
+      </div>
     </div>
   </main>
 </section>
